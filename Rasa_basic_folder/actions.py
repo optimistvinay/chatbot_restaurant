@@ -174,3 +174,25 @@ class ActionValidateCuisine(Action):
 
 		print (msg)
 		return [SlotSet('cuisine',cuisine)]
+
+
+class ActionValidateBudget(Action):
+	def name(self):
+		return 'action_validate_Budget'
+
+	def run(self, dispatcher, tracker, domain):
+		print("ActionValidateBudget !!!!")
+		budget = tracker.get_slot('budget')
+		msg = ""
+
+		budgetList = ['<300', '>=300 and <700', '>=700', 'less than 300', 'between 300 and 700', 'greater than 700', 'small', 'medium', 'large']
+
+		if any(budget.lower() in s.lower() for s in budgetList):
+			msg = "budget Validated..."
+		else:
+			msg = "The budget entered is not valid."
+			budget = "None"
+
+		print (msg)
+		return [SlotSet('budget',budget)]
+

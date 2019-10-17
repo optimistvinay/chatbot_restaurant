@@ -14,6 +14,7 @@ action_names:
 - action_validate_city
 - action_validate_email
 - action_validate_cuisine
+- action_validate_Budget
 actions:
 - utter_greet
 - utter_goodbye
@@ -29,6 +30,7 @@ actions:
 - actions.ActionValidateCity
 - actions.ActionValidateEmail
 - actions.ActionValidateCuisine
+- actions.ActionValidateBudget
 config:
   store_entities_as_slots: true
 entities:
@@ -48,6 +50,7 @@ intents:
 - validate_city
 - validate_email
 - validate_cuisine
+- validate_Budget
 slots:
   budget:
     initial_value: null

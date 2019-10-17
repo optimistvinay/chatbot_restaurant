@@ -3,8 +3,8 @@
     "action_listen": {
       "slots": [
         "budget",
-        "location",
-        "cuisine"
+        "cuisine",
+        "location"
       ]
     },
     "action_validate_city": {

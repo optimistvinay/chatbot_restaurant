@@ -26,6 +26,7 @@ intents:
  - validate_city
  - validate_email
  - validate_cuisine
+ - validate_Budget
 
 templates:
   utter_greet:
@@ -90,3 +91,5 @@ actions:
 - actions.ActionValidateCity
 - actions.ActionValidateEmail
 - actions.ActionValidateCuisine
+- actions.ActionValidateBudget
+

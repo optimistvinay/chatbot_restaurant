@@ -11,6 +11,7 @@
     "intent_validate_city",
     "intent_validate_email",
     "intent_validate_cuisine",
+    "intent_validate_Budget",
     "entity_location",
     "entity_cuisine",
     "entity_budget",
@@ -35,6 +36,7 @@
     "prev_action_email_results",
     "prev_action_validate_city",
     "prev_action_validate_email",
-    "prev_action_validate_cuisine"
+    "prev_action_validate_cuisine",
+    "prev_action_validate_Budget"
   ]
 }
