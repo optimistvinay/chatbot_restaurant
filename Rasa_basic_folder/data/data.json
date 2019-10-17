@@ -12,6 +12,27 @@
     ],
     "entity_synonyms": [
       {
+        "value": "mumbai",
+        "synonyms": [
+          "Mumbai",
+          "Bombay",
+          "bombay",
+          "mumbai",
+          "bambai"
+        ]
+      },
+      {
+        "value": "delhi",
+        "synonyms": [
+          "delhi",
+          "Delhi",
+          "Dilli",
+          "Delli",
+          "New Delhi",
+          "Capital city"
+        ]
+      },
+      {
         "value": "chinese",
         "synonyms": [
           "Chinese",
@@ -189,7 +210,7 @@
             "start": 31,
             "end": 36,
             "value": "north",
-            "entity": "budget"
+            "entity": "location"
           }
         ]
       },
@@ -266,7 +287,7 @@
             "start": 16,
             "end": 20,
             "value": "west",
-            "entity": "budget"
+            "entity": "location"
           }
         ]
       },
@@ -278,7 +299,7 @@
             "start": 14,
             "end": 19,
             "value": "18328",
-            "entity": "budget"
+            "entity": "location"
           }
         ]
       },
@@ -302,7 +323,7 @@
             "start": 29,
             "end": 34,
             "value": "29432",
-            "entity": "budget"
+            "entity": "location"
           }
         ]
       },
@@ -403,6 +424,66 @@
         ]
       },
       {
+        "text": "At Mumbai",
+        "intent": "restaurant_search",
+        "entities": [
+          {
+            "start": 3,
+            "end": 9,
+            "value": "mumbai",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "at Mumbai",
+        "intent": "restaurant_search",
+        "entities": [
+          {
+            "start": 3,
+            "end": 9,
+            "value": "mumbai",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "At Mumbai",
+        "intent": "restaurant_search",
+        "entities": [
+          {
+            "start": 3,
+            "end": 9,
+            "value": "mumbai",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "at mumbai",
+        "intent": "restaurant_search",
+        "entities": [
+          {
+            "start": 3,
+            "end": 9,
+            "value": "mumbai",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "in mumbai",
+        "intent": "restaurant_search",
+        "entities": [
+          {
+            "start": 3,
+            "end": 9,
+            "value": "delhi",
+            "entity": "location"
+          }
+        ]
+      },
+      {
         "text": "at Delhi",
         "intent": "restaurant_search",
         "entities": [
@@ -458,6 +539,18 @@
             "start": 37,
             "end": 42,
             "value": "Delhi",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "I am looking for some restaurants in Mumbai.",
+        "intent": "restaurant_search",
+        "entities": [
+          {
+            "start": 37,
+            "end": 43,
+            "value": "mumbai",
             "entity": "location"
           }
         ]
@@ -529,85 +622,37 @@
         ]
       },
       {
-        "text": "BBBBB is RS 3455",
+        "text": "1",
         "intent": "restaurant_search",
         "entities": [
           {
-            "start": 13,
-            "end": 17,
-            "value": "3455",
+            "start": 0,
+            "end": 1,
+            "value": "<300",
             "entity": "budget"
           }
         ]
       },
       {
-        "text": "on 34567",
+        "text": "2",
         "intent": "restaurant_search",
         "entities": [
           {
-            "start": 3,
-            "end": 8,
-            "value": "34567",
+            "start": 0,
+            "end": 1,
+            "value": ">=300 and <700",
             "entity": "budget"
           }
         ]
       },
       {
-        "text": "of 34563",
+        "text": "3",
         "intent": "restaurant_search",
         "entities": [
           {
-            "start": 3,
-            "end": 8,
-            "value": "34563",
-            "entity": "budget"
-          }
-        ]
-      },
-      {
-        "text": "Rs 11111",
-        "intent": "restaurant_search",
-        "entities": [
-          {
-            "start": 3,
-            "end": 8,
-            "value": "11111",
-            "entity": "budget"
-          }
-        ]
-      },
-      {
-        "text": "RS 11113",
-        "intent": "restaurant_search",
-        "entities": [
-          {
-            "start": 3,
-            "end": 8,
-            "value": "11113",
-            "entity": "budget"
-          }
-        ]
-      },
-      {
-        "text": "got 11113",
-        "intent": "restaurant_search",
-        "entities": [
-          {
-            "start": 4,
-            "end": 9,
-            "value": "11113",
-            "entity": "budget"
-          }
-        ]
-      },
-      {
-        "text": "Rs 345 for twos",
-        "intent": "restaurant_search",
-        "entities": [
-          {
-            "start": 3,
-            "end": 6,
-            "value": "345",
+            "start": 0,
+            "end": 1,
+            "value": ">=700",
             "entity": "budget"
           }
         ]
@@ -660,7 +705,31 @@
             "start": 38,
             "end": 41,
             "value": "pune",
-            "entity": "budget"
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "optimistvinay@gmail.com",
+        "intent": "capture_email_address",
+        "entities": [
+          {
+            "start": 0,
+            "end": 23,
+            "value": "optimistvinay@gmail.com",
+            "entity": "email"
+          }
+        ]
+      },
+      {
+        "text": "hsatam@gmail.com",
+        "intent": "capture_email_address",
+        "entities": [
+          {
+            "start": 0,
+            "end": 16,
+            "value": "hsatam@gmail.com",
+            "entity": "email"
           }
         ]
       }

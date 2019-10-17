@@ -221,12 +221,25 @@ class Zomato:
         Takes either query, latitude and longitude or cuisine as input.
         Returns a list of Restaurant IDs.
         """
-        
         cuisines = "%2C".join(cuisines.split(","))
         if str(limit).isalpha() == True:
             raise ValueError('LimitNotInteger')
         headers = {'Accept': 'application/json', 'user-key': self.user_key}
-        print(base_url + "search?q=" + str(query) + "&count=" + str(limit) + "&lat=" + str(latitude) + "&lon=" + str(longitude) + "&cuisines=" + str(cuisines) + "&start=" + str(start))
+        print(base_url + "search?q=" + str(query) + "&count=" + str(limit) + "&lat=" + str(latitude) + "&lon=" + str(longitude) + "&cuisines=" + str(cuisines) + "&start=" + str(start) + "&sort=rating&order=desc")
+        r = (requests.get(base_url + "search?q=" + str(query) + "&count=" + str(limit) + "&lat=" + str(latitude) + "&lon=" + str(longitude) + "&cuisines=" + str(cuisines) + "&start=" + str(start) + "&sort=rating&order=desc", headers=headers).content).decode("utf-8")
+        return r#a = ast.literal_eval(r)
+
+
+    def restaurant_L3(self, query="", latitude="", longitude="", cuisines="", limit=10, order="desc"):
+        """
+        Takes either query, latitude and longitude or cuisine as input.
+        Returns a list of Restaurant IDs sorted by rating in descending order
+        """
+        cuisines = "%2C".join(cuisines.split(","))
+        if str(limit).isalpha() == True:
+            raise ValueError('LimitNotInteger')
+        headers = {'Accept': 'application/json', 'user-key': self.user_key}
+        #print(base_url + "search?q=" + str(query) + "&count=" + str(limit) + "&lat=" + str(latitude) + "&lon=" + str(longitude) + "&cuisines=" + str(cuisines) + "&start=" + str(start))
         r = (requests.get(base_url + "search?q=" + str(query) + "&count=" + str(limit) + "&lat=" + str(latitude) + "&lon=" + str(longitude) + "&cuisines=" + str(cuisines)+ "&start=" + str(start), headers=headers).content).decode("utf-8")
         return r#a = ast.literal_eval(r)
 
@@ -251,7 +264,6 @@ class Zomato:
         if str(limit).isalpha() == True:
             raise ValueError('LimitNotInteger')
         headers = {'Accept': 'application/json', 'user-key': self.user_key}
-
         r = (requests.get(base_url + "search?q=" + str(query) + "&count=" + str(limit) + "&cuisines=" + str(cuisines), headers=headers).content).decode("utf-8")
         return r
 

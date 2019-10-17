@@ -3,7 +3,14 @@
     "action_listen": {
       "slots": [
         "cuisine",
-        "location"
+        "location",
+        "email",
+        "budget"
+      ]
+    },
+    "utter_ask_emailaddress": {
+      "slots": [
+        "email"
       ]
     },
     "utter_goodbye": {
@@ -13,16 +20,28 @@
       "slots": [
         "location"
       ]
+    },
+    "action_validate_email": {
+      "slots": [
+        "email"
+      ]
+    },
+    "action_email_results": {
+      "slots": [
+        "location"
+      ]
     }
   },
   "rasa_core": "0.10.1",
   "max_histories": [
     5,
-    5
+    5,
+    null
   ],
   "ensemble_name": "rasa_core.policies.ensemble.SimplePolicyEnsemble",
   "policy_names": [
     "rasa_core.policies.memoization.MemoizationPolicy",
-    "rasa_core.policies.keras_policy.KerasPolicy"
+    "rasa_core.policies.keras_policy.KerasPolicy",
+    "rasa_core.policies.fallback.FallbackPolicy"
   ]
 }

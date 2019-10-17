@@ -1,17 +1,18 @@
-import zomatopy
+import requests
 import json
 
-config={ "user_key":"6ce88a5ec1419e335afa1c7f92f4b739"}
-zomato = zomatopy.initialize_app(config)
-loc = 'Mumbai'
-cuisine = 'Chinese'
-location_detail=zomato.get_location(loc, 1)
-d1 = json.loads(location_detail)
-lat=d1["location_suggestions"][0]["latitude"]
-lon=d1["location_suggestions"][0]["longitude"]
-cuisines_dict={'american':1, 'chinese':25, 'north indian':50, 'italian':55, 'mexican': 73, 'south indian':85}
 
-results=zomato.restaurant_L3("average_cost_for_two=300", lat, lon, str(cuisines_dict.get(cuisine)), 5, "desc")
+base_url = "https://developers.zomato.com/api/v2.1/"
+user_key = "6ce88a5ec1419e335afa1c7f92f4b739"
+
+params = {}
+params['aggregate_rating'] = 4
+
+headers = {'Accept': 'application/json', 'user-key': user_key}
+#results = (requests.get(base_url + "/search?q='aggregate_rating=4'", headers=headers).content).decode("utf-8")
+results = (requests.get("https://developers.zomato.com/api/v2.1/search?entity_id=3&sort=restaurants.restaurant.average_cost_for_two&order=desc", headers=headers).content).decode("utf-8")
+#rint (base_url + "/search?q='aggregate_rating<=4'", headers)
+
 d = json.loads(results)
 response=""
 ctr=1

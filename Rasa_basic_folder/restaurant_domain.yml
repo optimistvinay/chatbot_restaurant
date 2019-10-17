@@ -5,11 +5,14 @@ slots:
     type: text
   budget:
     type: text
+  email:
+    type: text
 
 entities:
 - location
 - cuisine
 - budget
+- email
 
 intents:
  - greet
@@ -18,8 +21,11 @@ intents:
  - goodbye
  - thankyou
  - restaurant_search
+ - capture_email_address
  - email_results
-
+ - validate_city
+ - validate_email
+ - validate_cuisine
 
 templates:
   utter_greet:
@@ -30,7 +36,7 @@ templates:
     - "goodbye :)"
     - "Bye-bye"
   utter_default:
-    - "default message"
+    - "Unable to understand input, please try again..."
   utter_ask_cuisine: 
     - text: "what kind of cuisine would you like?"
       buttons:
@@ -53,19 +59,21 @@ templates:
   utter_ask_budgetfortwo:
     - text: "What is your average budget for two people?"
       buttons:
-      - title: "Lesser than Rs. 300"
-        payload: "min limit"
+      - title: "Less than Rs. 300"
+        payload: "<300"
       - title: "Rs. 300 to 700"
-        payload: "mid range"
+        payload: ">=300 and <700"
       - title: "More than 700"
-        payload: "max limit"
+        payload: ">=700"
   utter_ask_emailrequired:
     - text: "Would you need us to email you top 10 restaurants?"
       buttons:
       - title: "Yes"
-        payload: "Yes"
+        payload: "1"
       - title: "No"
-        payload: "No"
+        payload: "0"
+  utter_ask_emailaddress:
+      - "Please provide email address to send the list to"
 
 actions:
 - utter_greet
@@ -76,5 +84,9 @@ actions:
 - utter_ask_cuisine
 - utter_ask_budgetfortwo
 - utter_ask_emailrequired
+- utter_ask_emailaddress
 - actions.ActionSearchRestaurants
 - actions.ActionEmailSearchResults
+- actions.ActionValidateCity
+- actions.ActionValidateEmail
+- actions.ActionValidateCuisine

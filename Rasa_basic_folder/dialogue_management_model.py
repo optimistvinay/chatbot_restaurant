@@ -8,6 +8,7 @@ import logging
 from rasa_core.agent import Agent
 from rasa_core.channels.console import ConsoleInputChannel
 from rasa_core.interpreter import RegexInterpreter
+from rasa_core.policies import FallbackPolicy
 from rasa_core.policies.keras_policy import KerasPolicy
 from rasa_core.policies.memoization import MemoizationPolicy
 from rasa_core.interpreter import RasaNLUInterpreter
@@ -25,7 +26,10 @@ def train_dialogue(domain_file = 'restaurant_domain.yml',
 					training_data_file = './data/stories.md'):
 					
 	featurizer = MaxHistoryTrackerFeaturizer(BinarySingleStateFeaturizer(), max_history=5)
-	agent = Agent(domain_file, policies = [MemoizationPolicy(max_history = 5), KerasPolicy(featurizer)])
+
+	fallback = FallbackPolicy(fallback_action_name="action_default_fallback", core_threshold=0.3, nlu_threshold=0.3)
+
+	agent = Agent(domain_file, policies = [MemoizationPolicy(max_history = 5), KerasPolicy(featurizer), fallback])
 	
 	agent.train(
 				training_data_file,

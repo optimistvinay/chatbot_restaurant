@@ -5,6 +5,7 @@ from __future__ import unicode_literals
 import logging
 
 from rasa_core.agent import Agent
+from rasa_core.policies import FallbackPolicy
 from rasa_core.policies.keras_policy import KerasPolicy
 from rasa_core.policies.memoization import MemoizationPolicy
 from rasa_core.featurizers import (MaxHistoryTrackerFeaturizer, BinarySingleStateFeaturizer)
@@ -20,8 +21,9 @@ if __name__ == '__main__':
 	training_data_file = './data/stories.md'
 	model_path = './models/dialogue'
 	
+	fallback = FallbackPolicy(fallback_action_name="action_default_fallback", core_threshold=0.3, nlu_threshold=0.3)
 	featurizer = MaxHistoryTrackerFeaturizer(BinarySingleStateFeaturizer(), max_history=5)
-	agent = Agent('restaurant_domain.yml', policies = [MemoizationPolicy(max_history = 5), KerasPolicy(featurizer)])
+	agent = Agent('restaurant_domain.yml', policies = [MemoizationPolicy(max_history = 5), KerasPolicy(featurizer), fallback])
 	
 	agent.train(
 			training_data_file,

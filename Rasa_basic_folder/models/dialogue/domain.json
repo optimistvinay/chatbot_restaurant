@@ -6,12 +6,18 @@
     "intent_goodbye",
     "intent_thankyou",
     "intent_restaurant_search",
+    "intent_capture_email_address",
     "intent_email_results",
+    "intent_validate_city",
+    "intent_validate_email",
+    "intent_validate_cuisine",
     "entity_location",
     "entity_cuisine",
     "entity_budget",
+    "entity_email",
     "slot_budget_0",
     "slot_cuisine_0",
+    "slot_email_0",
     "slot_location_0",
     "prev_action_listen",
     "prev_action_restart",
@@ -24,7 +30,11 @@
     "prev_utter_ask_cuisine",
     "prev_utter_ask_budgetfortwo",
     "prev_utter_ask_emailrequired",
+    "prev_utter_ask_emailaddress",
     "prev_action_restaurant",
-    "prev_email_results"
+    "prev_action_email_results",
+    "prev_action_validate_city",
+    "prev_action_validate_email",
+    "prev_action_validate_cuisine"
   ]
 }

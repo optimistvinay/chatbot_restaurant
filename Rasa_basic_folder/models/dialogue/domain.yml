@@ -8,8 +8,12 @@ action_names:
 - utter_ask_cuisine
 - utter_ask_budgetfortwo
 - utter_ask_emailrequired
+- utter_ask_emailaddress
 - action_restaurant
-- email_results
+- action_email_results
+- action_validate_city
+- action_validate_email
+- action_validate_cuisine
 actions:
 - utter_greet
 - utter_goodbye
@@ -19,14 +23,19 @@ actions:
 - utter_ask_cuisine
 - utter_ask_budgetfortwo
 - utter_ask_emailrequired
+- utter_ask_emailaddress
 - actions.ActionSearchRestaurants
 - actions.ActionEmailSearchResults
+- actions.ActionValidateCity
+- actions.ActionValidateEmail
+- actions.ActionValidateCuisine
 config:
   store_entities_as_slots: true
 entities:
 - location
 - cuisine
 - budget
+- email
 intents:
 - greet
 - affirm
@@ -34,12 +43,19 @@ intents:
 - goodbye
 - thankyou
 - restaurant_search
+- capture_email_address
 - email_results
+- validate_city
+- validate_email
+- validate_cuisine
 slots:
   budget:
     initial_value: null
     type: rasa_core.slots.TextSlot
   cuisine:
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+  email:
     initial_value: null
     type: rasa_core.slots.TextSlot
   location:
@@ -48,11 +64,11 @@ slots:
 templates:
   utter_ask_budgetfortwo:
   - buttons:
-    - payload: min limit
-      title: Lesser than Rs. 300
-    - payload: mid range
+    - payload: <300
+      title: Less than Rs. 300
+    - payload: '>=300 and <700'
       title: Rs. 300 to 700
-    - payload: max limit
+    - payload: '>=700'
       title: More than 700
     text: What is your average budget for two people?
   utter_ask_cuisine:
@@ -70,11 +86,13 @@ templates:
     - payload: North Indian
       title: North Indian
     text: what kind of cuisine would you like?
+  utter_ask_emailaddress:
+  - text: Please provide email address to send the list to
   utter_ask_emailrequired:
   - buttons:
-    - payload: Yes
+    - payload: '1'
       title: Yes
-    - payload: No
+    - payload: '0'
       title: No
     text: Would you need us to email you top 10 restaurants?
   utter_ask_howcanhelp:
@@ -82,7 +100,7 @@ templates:
   utter_ask_location:
   - text: In what location?
   utter_default:
-  - text: default message
+  - text: Unable to understand input, please try again...
   utter_goodbye:
   - text: goodbye :)
   - text: Bye-bye
