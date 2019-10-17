@@ -8,12 +8,11 @@ class Utils:
 	@staticmethod
 	def getRestaurants(lat, lon, cuisine, budget):
 
-		print("****** getRestaurants *******")
+		#print("****** getRestaurants *******")
 		config={ "user_key":"6ce88a5ec1419e335afa1c7f92f4b739"}
 		zomato = zomatopy.initialize_app(config)
 		restaurants = []
 		for index in range(0,7):
-			print("Index : ",index)
 			if index == 0:
 				starting_index =0
 			else:
@@ -33,7 +32,6 @@ class Utils:
 				
 				avg_cost = restaurantJSON['restaurants'][i]['restaurant']['average_cost_for_two']
 				avg_ratng = restaurantJSON['restaurants'][i]['restaurant']['user_rating']['aggregate_rating']
-				print("avg_ratng : ", str(avg_ratng))
 				restaurant = Restaurant(name, address, cuisines, avg_cost, avg_ratng)
 				restaurants.append(restaurant)
 				i += 1
