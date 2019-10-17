@@ -33,51 +33,9 @@ class ActionSearchRestaurants(Action):
 		query = "average_cost_for_two>100"
 
 		restaurants = Utils.getRestaurants(lat, lon, cuisines_dict.get(cuisine), budget)
-		# restaurants = []
-		# for index in range(0,7):
-		# 	print("Index : ",index)
-		# 	if index == 0:
-		# 		starting_index =0
-		# 	else:
-		# 		starting_index =str(index *20)
-		# 	print(starting_index)
-		# 	restaurant=zomato.restaurant_search("", lat, lon, str(cuisines_dict.get(cuisine)),starting_index, 20)
-		# 	restaurantJSON = json.loads(restaurant)
-		# 	print("Length : ",len(restaurantJSON['restaurants']))
-		# 	i=0
-		# 	while i<len(restaurantJSON['restaurants']):
-				
-		# 		name = restaurantJSON['restaurants'][i]['restaurant']['name']
-		# 		address = restaurantJSON['restaurants'][i]['restaurant']['location']['address']
-		# 		city = restaurantJSON['restaurants'][i]['restaurant']['location']['city']
-		# 		cuisines = restaurantJSON['restaurants'][i]['restaurant']['cuisines']
-		# 		establishments = ','.join(string for string in restaurantJSON['restaurants'][i]['restaurant']['establishment'])
-				
-		# 		avg_cost = restaurantJSON['restaurants'][i]['restaurant']['average_cost_for_two']
-		# 		avg_ratng = restaurantJSON['restaurants'][i]['restaurant']['user_rating']['aggregate_rating']
-		# 		restaurant = Restaurant(name, address, cuisines, avg_cost, avg_ratng)
-		# 		restaurants.append(restaurant)
-		# 		i += 1
-
 		
-		# budget = "max limit"
-		# filter_restaurants =[]
-		# for rest in restaurants:
-		# 	if budget == "min limit":
-		# 		if rest.avg_cost < 300:
-		# 			filter_restaurants.append(rest)
-		# 	elif budget == "mid range":
-		# 		if 300 < rest.avg_cost < 700:
-		# 			filter_restaurants.append(rest)
-		# 	elif budget == "max limit":
-		# 		if 700 < rest.avg_cost:
-		# 			filter_restaurants.append(rest)
-
-		
-
-		# filter_restaurants = sorted(filter_restaurants, key=lambda x: x.avg_ratng, reverse=True)
-		for restaurant in restaurants:
-			print(restaurant.name + " @ " + restaurant.address + " @ " + str(restaurant.avg_cost) + " @ " + restaurant.avg_ratng)
+		# for restaurant in restaurants:
+		# 	print(restaurant.name + " @ " + restaurant.address + " @ " + str(restaurant.avg_cost) + " @ " + restaurant.avg_ratng)
 
 		filter_restaurants=restaurants[:5]
 
@@ -110,7 +68,6 @@ class ActionEmailSearchResults(Action):
 		lon=d1["location_suggestions"][0]["longitude"]
 		cuisines_dict={'american':1, 'chinese':25, 'north indian':50, 'italian':55, 'mexican': 73, 'south indian':85}
 		
-		#results=zomato.restaurant_L3("", lat, lon, str(cuisines_dict.get(cuisine)), 10, "desc")
 		restaurants = Utils.getRestaurants(lat, lon, cuisines_dict.get(cuisine), budget)
 		filter_restaurants=restaurants[:10]
 		response=""
@@ -126,21 +83,7 @@ class ActionEmailSearchResults(Action):
 				"\n\tand an average rating of "+restaurant.avg_ratng+"\n"
 				#"\n\tand an average rating of "+restaurant.avg_ratng+"\n"
 				ctr+=1
-		
-
-		# d = json.loads(results)
-		# response=""
-		# ctr=1
-		# if d['results_found'] == 0:
-		# 	response= "no results"
-		# else:
-		# 	for restaurant in d['restaurants']:
-		# 		response=response+ str(ctr)+". "+ restaurant['restaurant']['name']+ \
-		# 		"\n\tin "+restaurant['restaurant']['location']['locality_verbose']+ \
-		# 		"\n\tat "+restaurant['restaurant']['location']['address']+ \
-		# 		"\n\twith average cost for 2 at "+restaurant['restaurant']['currency']+" "+str(restaurant['restaurant']['average_cost_for_two'])+ \
-		# 		"\n\tand an average rating of "+str(restaurant['restaurant']['user_rating']['aggregate_rating'])+"\n"
-		# 		ctr+=1
+	
 		
 		email = send_email.initialize_app(config)
 		sender = "chatbotrestaurant@gmail.com"

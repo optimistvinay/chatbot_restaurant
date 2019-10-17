@@ -37,17 +37,17 @@ class Utils:
 				restaurant = Restaurant(name, address, cuisines, avg_cost, avg_ratng)
 				restaurants.append(restaurant)
 				i += 1
-		#This needs to be removed after gettng te value
-		# budget = "max limit"
+		
 		filter_restaurants =[]
 		for rest in restaurants:
-			if budget == "min limit":
+			
+			if budget == "min limit" or budget == "<300" or budget == "less than 300" or budget == "small":
 				if rest.avg_cost < 300:
 					filter_restaurants.append(rest)
-			elif budget == "mid range":
+			elif budget == ">=300 and <700" or budget == "between 300 and 700" or budget == "medium":
 				if 300 < rest.avg_cost < 700:
 					filter_restaurants.append(rest)
-			elif budget == "max limit":
+			elif budget == ">=700" or budget == "greater than 700" or budget == "large":
 				if 700 < rest.avg_cost:
 					filter_restaurants.append(rest)
 
